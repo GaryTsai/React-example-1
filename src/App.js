@@ -26,7 +26,6 @@ class App extends Component {
   //When click submit button, userName of state will change new content
   handleClick(){
 
-    // this.setState({userName:this.state.inputText,inputText:''})  ?
     // (1)
     this.setState(state=>({
       userName: state.inputText,
@@ -34,20 +33,33 @@ class App extends Component {
     }))
     // (2) refs
     // const text = this.textInput.value;
+    // this.textInput.focus();
     // this.setState(state=>({
     //   userName:text,
     // }))
     // this.textInput.value ='';
+
+    //(3)string refs
+    // this.refs.textInput.focus();
+    // const text = this.refs.textInput.value;
+    // this.setState(state=>({
+    //   userName:text,
+    // }))
+    // this.refs.textInput.value ='';
   }
+
 
   render() {
     return (
         //className equal to HTML class
         <div className="Frame-style">
           <div > Welcome {this.state.userName}</div>
+          {/*(1)*/}
           <input className="Input-style" type="text" maxLength="50" value={this.state.inputText} onChange={e =>this.handleOnChange(e)} /><br/>
+          {/*(2)*/}
           {/*<input className="Input-style" type="text" maxLength="50"  ref={ (input) => { this.textInput = input} } /><br/>*/}
-
+          {/*(3)*/}
+          {/*<input className="Input-style" type="text" maxLength="50"  ref="textInput" /><br/>*/}
           <button className="Submit-style" onClick={this.handleClick} >submit</button>
         </div>
     );
